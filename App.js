@@ -39,8 +39,7 @@ const styles = StyleSheet.create({
  * データのタイトルをリスト表示するコンポーネント
  * ナビゲーターで描画すると引数(props)に`navigation`が渡される
  */
-// class ListScreen extends React.Component{
-  const ListScreen = ({ navigation }) => (
+const ListScreen = ({ navigation }) => (
   <FlatList
     data={mathematics}
     renderItem={({ item }) => (
@@ -50,32 +49,13 @@ const styles = StyleSheet.create({
         /* タイトルが押されたら詳細画面にナビゲート、`item`を引数として渡している */
         onPress={() => navigation.navigate('Detail', item)}
       >
-        <Text style={styles.heading}>{item.title}</Text>
-      </TouchableOpacity>
-      )}
-      contentContainerStyle={styles.container}
-    />);
-  // render(){
-  //   return(
+    <Text style={styles.heading}>{item.title}</Text>
+    </TouchableOpacity>
+    )}
+  contentContainerStyle={styles.container}
+  />
+);
 
-  // <FlatList
-  //   data={mathematics}
-  //   renderItem={({ item }) => (
-  //     <TouchableOpacity
-  //       key={item.key}
-  //       style={styles.listItem}
-  //       /* タイトルが押されたら詳細画面にナビゲート、`item`を引数として渡している */
-  //       onPress={() => navigation.navigate('Detail', item)}
-  //     >
-  //       <Text style={styles.heading}>{item.title}</Text>
-  //     </TouchableOpacity>
-  //     )}
-  //     contentContainerStyle={styles.container}
-  //   />
-  //   );
-  // }
-    
-  //   }
 /* ナビゲーションの見た目や挙動に関する設定 */
 ListScreen.navigationOptions = () => ({
   /* 画面ヘッダーに表示するタイトルを'Mathematics'にする */
@@ -83,27 +63,14 @@ ListScreen.navigationOptions = () => ({
 });
 
 // データの詳細を表示するコンポーネント
-// class DetailScreen extends React.Component{
-  const DetailScreen = ({ navigation }) => (
-    <View style={styles.container}>
-        {/* `navigation.state.params`からリストで渡した`item`の中身が取れる */}
-        <Text style={[styles.heading, { marginBottom: 24 }]}>{navigation.state.params.title}</Text>
-        <Text style={styles.paragraph}>{navigation.state.params.detail}</Text>
-      </View>
-  );
-  // render(){
-  //   return(
-  //     <View style={styles.container}>
-  //       {/* `navigation.state.params`からリストで渡した`item`の中身が取れる */}
-  //       <Text style={[styles.heading, { marginBottom: 24 }]}>{navigation.state.params.title}</Text>
-  //       <Text style={styles.paragraph}>{navigation.state.params.detail}</Text>
-  //     </View>
-  //   );
-  // }
-  
-// }
+const DetailScreen = ({ navigation }) => (
+  <View style={styles.container}>
+      {/* `navigation.state.params`からリストで渡した`item`の中身が取れる */}
+      <Text style={[styles.heading, { marginBottom: 24 }]}>{navigation.state.params.title}</Text>
+      <Text style={styles.paragraph}>{navigation.state.params.detail}</Text>
+    </View>
+);
 
-// const App=createApp(RootStack);
 /*
  * StackNavigatorを作成
  * 第一引数は登録する画面(Screen)情報を設定
